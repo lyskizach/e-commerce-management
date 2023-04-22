@@ -1,1 +1,1 @@
-# e-commerce-management
+# E-commerce Back End Starter Code
