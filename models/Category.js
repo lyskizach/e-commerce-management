@@ -7,25 +7,15 @@ Category.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    category_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // numberOfProducts: {
-    //   type: DataTypes.INTEGER,
-    // },
   }, 
-  // {
-  //   hooks: {
-  //     beforeCreate: async (newCategory) => {
-  //       newCategory.
-  //     }
-  //   }
-  // },
   {
     sequelize,
     timestamps: false,
