@@ -17,22 +17,12 @@ Product.belongsTo(Category, {
 
 // // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag, {
-  foreignKey: 'product_id',
-  onUpdate: 'CASCADE',
-  through: {
-    model: ProductTag,
-    unique: false,
-  },
+  through: { model: ProductTag }
 });
 
 // // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
-  foreignKey: 'tag_id',
-  onUpdate: 'CASCADE',
-  through: {
-    model: ProductTag,
-    unique: false,
-  },
+  through: { model: ProductTag },
 });
 
 module.exports = {
