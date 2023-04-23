@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findAll({
-      include: [{ model: Category}, { model: Tag }]
+      include: [{ model: Category}, { model: Tag, through: ProductTag }]
     });
     res.status(200).json(productData);
   } catch (err) {
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findByPk(req.params.id, {
-      include: [{ model: Category}, { model: Tag }]
+      include: [{ model: Category}, { model: Tag, through: ProductTag }]
     });
     if (!productData) {
       res.status(404).json(productData);
@@ -35,8 +35,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new product
-router.post('/', (req, res) => {
-  /* req.body should look like this...
+ /* req.body should look like this...
     {
       product_name: "Basketball",
       price: 200.00,
@@ -44,6 +43,7 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
+router.post('/', (req, res) => {
   Product.create({
     product_name: req.body.product_name,
     price: req.body.price,
