@@ -49,6 +49,7 @@ router.post('/', (req, res) => {
     price: req.body.price,
     stock: req.body.stock,
     tagIds: req.body.tagIds,
+    category_id: req.body.category_id,
   })
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
@@ -70,7 +71,7 @@ router.post('/', (req, res) => {
       res.status(400).json(err);
     });
 });
-// ??? the first .then of this put request ???
+
 // update product
 router.put('/:id', (req, res) => {
   // update product data

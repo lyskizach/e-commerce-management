@@ -14,14 +14,13 @@ Tag.init(
     tag_name: {
       type: DataTypes.STRING,
     },
-    // product_id: {
-    //   allowNull: true,
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'product',
-    //     key: 'id',
-    //   }
-    // },
+    product_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'product',
+        key: 'id',
+      }
+    },
   },
   {
     sequelize,
