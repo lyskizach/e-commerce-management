@@ -45,6 +45,7 @@ router.get('/:id', async (req, res) => {
   */
 router.post('/', (req, res) => {
   Product.create({
+    id: req.body.id,
     product_name: req.body.product_name,
     price: req.body.price,
     stock: req.body.stock,
@@ -57,7 +58,7 @@ router.post('/', (req, res) => {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
             product_id: product.id,
-            tag_id
+            tag_id,
           };
         });
         return ProductTag.bulkCreate(productTagIdArr);
